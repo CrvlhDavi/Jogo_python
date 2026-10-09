@@ -7,7 +7,7 @@ from tkinter.font import Font
 import pygame as pg
 from pygame import Surface, Rect
 
-from code.Const import COLOR_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAW_TIME
+from code.Const import COLOR_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAW_TIME, COLOR_GREEN, COLOR_CYAN
 from code.EntityMediator import EntityMediator
 from code.enemy import Enemy
 from code.entity1 import Entity1
@@ -43,6 +43,10 @@ class Level:
                         shoot= ent.shoot()
                         if shoot is not None:
                             self.entity_list.append(shoot)
+                    if ent.name == 'Player1':
+                        self.level_text(14, f'Player1 - Health: {ent.health} | Score: {ent.score}', COLOR_GREEN, (10, 25))
+                    if ent.name == 'Player2':
+                        self.level_text(14, f'Player2 - Health: {ent.health} | Score: {ent.score}', COLOR_CYAN, (10, 45))
 
                 for event in pg.event.get():
                     if event.type == pg.QUIT:
@@ -52,11 +56,10 @@ class Level:
                         choice = random.choice(('Enemy1', 'Enemy2'))
                         self.entity_list.append(EntityFactory.get_entity(choice))
 
-
                 #printed text
                 self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000:.1f}s', COLOR_WHITE, (10, 5))
-                self.level_text(14, f'FPS: {clock.get_fps() :.0f}', COLOR_WHITE, (10, WIN_HEIGHT - 5))
-                self.level_text(14, f'Entidades: {len(self.entity_list)}', COLOR_WHITE, (10, WIN_HEIGHT - 20))
+                self.level_text(14, f'FPS: {clock.get_fps() :.0f}', COLOR_WHITE, (10, WIN_HEIGHT - 15))
+                self.level_text(14, f'Entidades: {len(self.entity_list)}', COLOR_WHITE, (10, WIN_HEIGHT - 25))
                 pg.display.flip()
 
                 #collisions
