@@ -25,12 +25,12 @@ class Level:
         self.entity_list.extend(EntityFactory.get_entity(self.name + 'Bg'))
 
         player = EntityFactory.get_entity('Player1')
-        player.score = player_score[0]#position player 1 list game.py
+        player.score = player_score[0]  # posição do Player1 na lista do game.py
         self.entity_list.append(player)
 
         if game_mode in[MENU_OPTION[1], MENU_OPTION[2]]: #const.py
             player = EntityFactory.get_entity('Player2')
-            player.score = player_score[1] #position player 2 list game.py
+            player.score = player_score[1]  # posição do Player2 na lista do game.py
             self.entity_list.append(player)
 
         #evento
@@ -39,8 +39,9 @@ class Level:
 
 
     def run(self, player_score: list[int]):
-            # pg.mixer_music.load(f'./asset/{self.name}.mp3')
-            # pg.mixer_music.play(-1)
+            pg.mixer_music.load(f'./asset/{self.name}.mp3')
+            pg.mixer_music.set_volume(0.3)
+            pg.mixer_music.play(-1)
             clock = pg.time.Clock()#fps
             while True:
                 clock.tick(60)#definição do fps
@@ -75,22 +76,22 @@ class Level:
 
                             return True
 
-                        found_player = False #player live
+                        found_player = False #jogador vivo
                         for ent in self.entity_list:
                             if isinstance(ent, Player):
                                 found_player = True
 
-                        if not found_player: #player die
+                        if not found_player: #jogador morto
                             return False
 
 
-                #printed text
+                # texto exibido
                 self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000:.1f}s', COLOR_WHITE, (10, 5))
                 self.level_text(14, f'FPS: {clock.get_fps() :.0f}', COLOR_WHITE, (10, WIN_HEIGHT - 15))
                 self.level_text(14, f'Entidades: {len(self.entity_list)}', COLOR_WHITE, (10, WIN_HEIGHT - 25))
                 pg.display.flip()
 
-                #collisions
+                # colisões
                 EntityMediator.verify_collision(entity_list=self.entity_list)
                 EntityMediator.verify_health(entity_list=self.entity_list)
             pass

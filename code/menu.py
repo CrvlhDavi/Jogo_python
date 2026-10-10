@@ -15,9 +15,10 @@ class Menu:
     def run(self):
         menu_option = 0 #Inicia a seleção do menu
         pg.mixer_music.load('./asset/Menu.mp3')
+        pg.mixer_music.set_volume(0.4)
         pg.mixer_music.play(-1)  # o parametro -1 é para gerar um loop na musica, que ao chegar no final, ela recomece
         while True:
-            #draw image
+            # desenha a imagem
             self.window.blit(source=self.surf, dest=self.rect)
             self.menu_text(50, "Mountain", COLOR_ORANGE, ((WIN_WIDTH / 2), 70))
             self.menu_text(50, "Shooter", COLOR_ORANGE, ((WIN_WIDTH / 2), 120))
@@ -29,23 +30,23 @@ class Menu:
                     self.menu_text(20, MENU_OPTION[i], COLOR_WHITE, ((WIN_WIDTH / 2), 200 + 25 * i))
             pg.display.flip()
 
-            #check all events
+            # verifica todos os eventos
             for event in pg.event.get():
                 if event.type == pg.QUIT:
-                    pg.quit()  # Close window
-                    quit()  # end pygame
+                    pg.quit()  # fecha a janela
+                    quit()  # finaliza o pygame
                 if event.type == pg.KEYDOWN:
                     if event.key == pg.K_DOWN:
                        if menu_option <len(MENU_OPTION) -1: #cria um looping que ao acabar as opções do menu (para baixo), ele volta para o começo
-                           menu_option +=1 #DOWN KEY
+                           menu_option +=1 #tecla para baixo
                        else:
                            menu_option = 0
                     if event.key == pg.K_UP:
                         if menu_option > 0:  # cria um looping que ao acabar as opções do menu(para cima), ele volta para o começo
-                            menu_option -= 1 #UP KEY
+                            menu_option -= 1 #tecla para cima
                         else:
                             menu_option = len(MENU_OPTION)-1
-                    if event.key == pg.K_RETURN: #ENTER
+                    if event.key == pg.K_RETURN: #tecla ENTER
                         return MENU_OPTION[menu_option]
 
 

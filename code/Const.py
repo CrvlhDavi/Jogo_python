@@ -31,8 +31,8 @@ ENTITY_SPEED ={
     'Player2Shot': 3,
     'Enemy1': 2,
     'Enemy1Shot': 5,
-    'Enemy2': 1,
-    'Enemy2Shot': 2,
+    'Enemy2': 3,
+    'Enemy2Shot': 6,
 }
 
 EVENT_ENEMY = pygame.USEREVENT + 1
@@ -51,21 +51,21 @@ ENTITY_HEALTH = {
     'Level2Bg4': 999,
     'Level1Bg5': 999,
     'Level1Bg6': 999,
-    'Player1': 300,
+    'Player1': 150,
     'Player1Shot': 1,
-    'Player2': 300,
+    'Player2': 150,
     'Player2Shot': 1,
-    'Enemy1': 50,
+    'Enemy1': 60,
     'Enemy1Shot': 1,
-    'Enemy2': 60,
+    'Enemy2': 75,
     'Enemy2Shot': 1,
 }
 
 ENTITY_SHOT_DELAY ={
     'Player1': 20,
     'Player2': 15,
-    'Enemy1': 100,
-    'Enemy2': 120,
+    'Enemy1': 80,
+    'Enemy2': 100,
 
 }
 ENTITY_DAMAGE = {
@@ -85,10 +85,10 @@ ENTITY_DAMAGE = {
     'Player1Shot': 25,
     'Player2': 1,
     'Player2Shot': 25,
-    'Enemy1': 15,
+    'Enemy1': 60,
     'Enemy1Shot': 20,
-    'Enemy2': 20,
-    'Enemy2Shot': 25,
+    'Enemy2': 80,
+    'Enemy2Shot': 35,
 
 }
 
@@ -140,7 +140,7 @@ SPAW_TIME = 2000 #2s spaw enimies
 
 #T
 TIMEOUT_STEP = 100 #100ms
-TIMEOUT_LEVEL = 20000 #60s
+TIMEOUT_LEVEL = 45000 #45s
 
 # W
 WIN_WIDTH = 576

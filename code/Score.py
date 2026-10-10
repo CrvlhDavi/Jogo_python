@@ -19,6 +19,7 @@ class Score:
 
     def save(self, game_mode:str, player_score:list[int]):
         pg.mixer_music.load('./asset/Score.mp3')
+        pg.mixer_music.set_volume(0.3)
         pg.mixer_music.play(-1)
         db_proxy = DBProxy('DBScore')
         name = ' '
@@ -63,6 +64,7 @@ class Score:
 
     def show(self):
         pg.mixer_music.load('./asset/Score.mp3')
+        pg.mixer_music.set_volume(0.4)
         pg.mixer_music.play(-1)
         self.window.blit(source=self.surf, dest=self.rect)
         self.score_text(48, 'TOP 10 SCORE', COLOR_CYAN, SCORE_POS['Title'])
