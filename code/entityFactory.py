@@ -8,17 +8,23 @@ from code.enemy import Enemy
 from code.player import Player
 
 
-#em factory nunca se instancia, apenas chama outras instancias
+#em factory nunca se instancia, apenas chama outras instâncias
 class EntityFactory:
 
     @staticmethod
     def get_entity(entity_name: str, position=(0,0)):
         match entity_name:
-            case 'Level1Bg': #puxa imagens que possuirem este nome no arquivo
+            case 'Level1Bg': #puxa imagens que possuem este nome no arquivo
                 list_bg = []
-                for i in range(7):
+                for i in range(7): #level1 bg imagens
                     list_bg.append(Background(f'Level1Bg{i}', (0,0)))#COMECA AS 7 IMAGENS
                     list_bg.append(Background(f'Level1Bg{i}', (WIN_WIDTH,0)))
+                return list_bg
+            case 'Level2Bg':
+                list_bg = []
+                for i in range(5): #level2 bg images
+                    list_bg.append(Background(f'Level2Bg{i}', (0, 0)))  # COMECA AS 7 IMAGENS
+                    list_bg.append(Background(f'Level2Bg{i}', (WIN_WIDTH, 0)))
                 return list_bg
             case 'Player1':
                 return Player('Player1', (10, WIN_HEIGHT / 2-60))
